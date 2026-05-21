@@ -10,13 +10,18 @@ interface MovieResponse {
   total_results: number;
 }
 
-export const fetchMovies = async (query: string): Promise<Movie[]> => {
+export const fetchMovies = async (
+  query: string,
+  page: number,
+): Promise<MovieResponse> => {
   const response = await axios.get<MovieResponse>(`search/movie`, {
     params: {
       query: query,
+      page: page,
       include_adult: false,
       language: 'en-US',
     },
   });
-  return response.data.results;
+  console.log(response.data);
+  return response.data;
 };
