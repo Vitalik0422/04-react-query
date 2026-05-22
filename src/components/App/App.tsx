@@ -8,7 +8,7 @@ import MovieGrid from '../MovieGrid/MovieGrid';
 import MovieModal from '../MovieModal/MovieModal';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import toast, { Toaster } from 'react-hot-toast';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { PaginatedItems } from '../Pagination/Pagination';
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
     queryKey: ['movies', searchQuery, page],
     queryFn: () => fetchMovies(searchQuery, page),
     enabled: !!searchQuery,
+    placeholderData: keepPreviousData,
   });
 
   const totalPages = data?.total_pages || 1;
@@ -34,6 +35,7 @@ function App() {
   };
 
   const showMovieModal = async (movie: Movie) => {
+    setPage(1);
     setSelectedMovie(movie);
   };
 
