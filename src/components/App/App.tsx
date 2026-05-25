@@ -31,11 +31,11 @@ function App() {
   }, [data]);
 
   const handleMovieSearch = (query: string) => {
+    setPage(1);
     setSearchQuery(query);
   };
 
   const showMovieModal = async (movie: Movie) => {
-    setPage(1);
     setSelectedMovie(movie);
   };
 
