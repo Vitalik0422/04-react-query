@@ -17,11 +17,7 @@ const ReactPaginate = (
   >
 ).default;
 
-export const PaginatedItems = ({
-  totalPages,
-  page,
-  setPage,
-}: PaginateProps) => {
+export const Pagination = ({ totalPages, page, setPage }: PaginateProps) => {
   return (
     <>
       <ReactPaginate
